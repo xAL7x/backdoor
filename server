@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+
+from termcolor import colored
+import socket 
+print(colored("you must run the client","red"))
+
+print("--------- ALHASSAN ALHARBI ---------")
+print("---------   back door  ---------")
+print("")
+
+s = socket.socket()
+host = socket.gethostname()
+port = 5555
+s.bind((host,port))
+
+s.listen()
+while True:
+        client_channel, client_address = s.accept()
+        print(colored('New connection from ->', 'blue'), client_address)
+        client_channel.send(b"we hacked ")
+        client_channel.close()
+
